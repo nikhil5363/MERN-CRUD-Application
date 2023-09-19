@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { addUser } from '../Service/Api'
+import { addData } from '../Context/ContextProvider'
+
 
 const initialValues = {
   firstname:'',
@@ -11,7 +13,9 @@ const initialValues = {
 
 
 const AddUsers = () => {
-      const [user,setUser] = useState(initialValues)
+      const [user,setUser] = useState(initialValues);
+
+      const {udata,setUdata} = useContext(addData);
 
       const {firstname,lastname,email,phone} = user;
 
@@ -25,8 +29,9 @@ const AddUsers = () => {
 
       const addUserDetails= async(e) =>{
           e.preventDefault();
-          await addUser(user);
+          await addUser(user);          
           navigate("/allusers")
+          setUdata(user)
       }
 
   return (

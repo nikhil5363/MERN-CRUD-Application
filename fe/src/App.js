@@ -8,21 +8,23 @@ import EditUser from './Components/EditUser';
 import Navbar from './Components/Navbar';
 import Notfound from './Components/Notfound';
 import UserDetails from './Components/UserDetails';
+import ContextProvider from './Context/ContextProvider';
 
 function App() {
   return (
-          <BrowserRouter>
-          <Navbar/>
-            <Routes>
-              <Route path='/' element={<LandingPage/>}/>
-              <Route path='/allusers' element={<AllUsers/>}/>
-              <Route path='/adduser' element={<AddUsers/>}/>
-              <Route path='/getUsers/:id' element={<UserDetails/>}/>
-              <Route path='/edituser/:id' element={<EditUser/>}/>
-              <Route path='/*' element={<Notfound/>}/>
-
-            </Routes>
-          </BrowserRouter>
+    <ContextProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/allusers' element={<AllUsers />} />
+          <Route path='/adduser' element={<AddUsers />} />
+          <Route path='/getUsers/:id' element={<UserDetails />} />
+          <Route path='/edituser/:id' element={<EditUser />} />
+          <Route path='/*' element={<Notfound />} />
+        </Routes>
+      </BrowserRouter>
+    </ContextProvider>
   );
 }
 

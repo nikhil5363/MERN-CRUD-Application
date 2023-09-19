@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { editUser , getUsers } from '../Service/Api'
+import { updateData } from '../Context/ContextProvider'
 
 const initialValues = {
   firstname: '',
@@ -11,6 +12,8 @@ const initialValues = {
 
 const EditUser = () => {
   const [user, setUser] = useState(initialValues)
+
+  const [updata,setUPdata] =useState(updateData)
 
   const { firstname, lastname, email, phone } = user;
 
@@ -34,8 +37,9 @@ const EditUser = () => {
 
   const editUserDetails = async (e) => {
     e.preventDefault();
-    await editUser(id,user);
+    const updateduser= await editUser(id,user);
     navigate("/allusers")
+    setUPdata(updateduser)
   }
   return (
     <div className='container'>
