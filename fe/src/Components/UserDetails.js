@@ -14,8 +14,7 @@ const UserDetails = () => {
 
     const { firstname, lastname, email, phone } = user;
 
-    const { id } = useParams()
-
+    const { id } = useParams() // Parameters
 
     let navigate = useNavigate();
 
